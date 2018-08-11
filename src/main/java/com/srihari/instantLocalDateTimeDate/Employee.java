@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.srihari.instantLocalDateTimeDate;
 
 import java.util.Date;
 import java.time.Instant;
@@ -13,9 +13,15 @@ public class Employee {
 	private String name;
 	private LocalDateTime localDateTime;
 	private Date date;
+	private java.sql.Date sqlDate;
 	
 	
-	
+	public java.sql.Date getSqlDate() {
+		return sqlDate;
+	}
+	public void setSqlDate(java.sql.Date sqlDate) {
+		this.sqlDate = sqlDate;
+	}
 	public LocalDateTime getLocalDateTime() {
 		return localDateTime;
 	}

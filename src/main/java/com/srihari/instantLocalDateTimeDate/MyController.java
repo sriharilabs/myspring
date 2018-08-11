@@ -1,6 +1,7 @@
-package com.example.demo;
+package com.srihari.instantLocalDateTimeDate;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -29,6 +30,10 @@ public class MyController {
 		emp.setIndate(Instant.now());
 		emp.setName("srihari");
 		emp.setLocalDateTime(LocalDateTime.now());
+		//long time = System.currentTimeMillis();
+		//java.sql.Date date = new java.sql.Date(time);
+		//java.sql.Date.
+		emp.setSqlDate(java.sql.Date.valueOf(LocalDate.now()));
 		return emp;
 	}
 }
