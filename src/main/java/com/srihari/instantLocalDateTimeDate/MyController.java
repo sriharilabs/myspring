@@ -4,6 +4,11 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.IntStream;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,16 +28,33 @@ public class MyController {
 		
 	}
 	
-	@GetMapping(value="/")
-	public @ResponseBody Employee getEmployee() {
+	@GetMapping(value="/getSet")
+	public @ResponseBody Set<Employee> getEmployee() {
+		
+		Map<Employee,String> map=getMapEmployee();
+		Set<Employee> set = new HashSet<>(map.keySet());
+		return set;
+	}
+	
+	@GetMapping(value="/getMap")
+	public @ResponseBody Map<Employee,String> getMapEmployee() {
+		
+		Map<Employee,String> map=new HashMap<Employee,String>();
+		IntStream.range(0, 10).forEach(
+				nbr ->{ System.out.println(nbr);
+				map.put(getE(nbr), "sr");
+				}
+			);
+		return map;
+	}
+	
+	
+	public Employee getE(int i) {
 		Employee emp=new Employee();
 		emp.setDate(new Date());
 		emp.setIndate(Instant.now());
-		emp.setName("srihari");
+		emp.setName("srihari"+i);
 		emp.setLocalDateTime(LocalDateTime.now());
-		//long time = System.currentTimeMillis();
-		//java.sql.Date date = new java.sql.Date(time);
-		//java.sql.Date.
 		emp.setSqlDate(java.sql.Date.valueOf(LocalDate.now()));
 		return emp;
 	}
